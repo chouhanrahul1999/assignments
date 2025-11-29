@@ -1,0 +1,56 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="onButtonClick()" id="btn">counter 0</button>
+
+    <script>
+        function onButtonClick() {
+            const currentVal = document.getElementById("btn").innerHTML;
+            const currentCounter = currentVal.split(" ")[1];
+            const newCounter = parseInt(currentCounter) + 1;
+            document.getElementById("btn").innerHTML = "counter " + newCounter;
+        }
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="buttonParent"></div>
+    <script>
+      let state = {
+        count: 0,
+      };
+
+      function onButtonClick() {
+        state.count++;
+        buttonComponentRerander();
+      }
+
+      function buttonComponentRerander() {
+        document.getElementById("buttonParent").innerHTML = "";
+        const component = buttonComponent(state.count);
+        document.getElementById("buttonParent").appendChild(component);
+      }
+
+      const buttonComponent = (count) => {
+        const button = document.createElement("button");
+        button.innerHTML = `counter ${count}`;
+        button.setAttribute("onclick", 'onButtonClick()');
+        return button;
+      };
+      buttonComponentRerander();
+    </script>
+  </body>
+</html>

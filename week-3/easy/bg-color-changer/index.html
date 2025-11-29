@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="h">Todo list</h1>
+
+    <div>
+      <input type="text" />
+      <button onclick="addTodo()">Add todo</button>
+    </div>
+    <h3 class="h"></h3>
+
+    <script>
+      let ctr = 1;
+      const addTodo = () => {
+        const inputElement = document.querySelector("input");
+        const value = inputElement.value;
+        const el = document.querySelectorAll("h3")[0];
+        if (editingId) {
+          const element = document.getElementById(editingId);
+          const div = element.querySelector("div");
+          div.innerHTML = value;
+          editingId = null;
+        } else {
+          const devEl = document.createElement("li");
+          devEl.setAttribute("id", `todo-${ctr}`);
+          devEl.innerHTML = `<div>${value}</div> <button onclick=onDelete('todo-${ctr}')>delete</button><button onclick=onEdit('todo-${ctr}')>edit</button>`;
+          el.appendChild(devEl);
+          ctr = ctr + 1;
+        }
+        inputElement.value = "";
+        console.log(value);
+      };
+      const onDelete = (index) => {
+        const element = document.getElementById(index);
+        element.parentNode.removeChild(element);
+        console.log(element);
+      };
+      let editingId = null;
+      const onEdit = (index) => {
+        const element = document.getElementById(index);
+        const div = element.querySelector("div");
+        const inputElement = document.querySelector("input");
+        inputElement.value = div.innerText;
+        console.log(div.innerText);
+        editingId = index;
+      };
+    </script>
+  </body>
+</html>

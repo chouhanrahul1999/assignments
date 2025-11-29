@@ -4,7 +4,26 @@
 */
 
 function isPalindrome(str) {
-  return true;
+  const origionakStr = str.replace(/[^a-z0-9]/gi, '').toLowerCase();
+
+  const reverseStr = origionakStr.split("");
+  reverseStr.reverse();
+  const finalStr = reverseStr.join("");
+  if(origionakStr === finalStr) {
+    return true;
+  } else {
+    return false;
+  }
+
+  // const reverseStr = origionakStr.split("")
+  // reverseStr.reverse();
+  // const finalStr = reverseStr.join("");
+  // if (origionakStr === finalStr) {
+  //  return true;
+  // } else {
+  //   return false;
+  // }
+  
 }
 
 module.exports = isPalindrome;

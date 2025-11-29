@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="username" type="text" placeholder="username" />
+    <input id="password" type="text" placeholder="password" />
+    <button onclick="signup()">signup</button>
+    <input id="username" type="text" placeholder="username" />
+    <input id="password" type="text" placeholder="password" />
+    <button onclick="signin()">signin</button>
+    <button onclick="logout()">logout</button>
+    <div id="data"></div>
+  </body>
+  <script>
+    const logout = () => {
+      localStorage.removeItem("token");
+    };
+
+    const signup = async () => {
+      username = document.getElementById("username").value;
+      password = document.getElementById("password").value;
+
+      const resposne = await axios.post("http://localhost:3000/signup", {
+        username: username,
+        password: password,
+      });
+      alert("you are account has been created");
+    };
+    const signin = async () => {
+      username = document.getElementById("username").value;
+      password = document.getElementById("password").value;
+
+      const response = await axios.post("http://localhost:3000/signin", {
+        username: username,
+        password: password,
+      });
+      localStorage.setItem("token", response.data.token);
+    };
+
+    const getInfo = async () => {
+      const response = await axios.get("http://localhost:3000/me", {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      });
+      document.getElementById("data").innerHTML =
+        "usename: " +
+        response.data.username +
+        "password: " +
+        response.data.password;
+    };
+    getInfo();
+  </script>
+</html>

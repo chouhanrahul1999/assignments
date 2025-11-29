@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Todo app</h1>
+    <input type="text" />
+    <button onclick="addTodo()">Add Todo</button>
+    <div id="todo-list"></div>
+
+    <script>
+      let todos = [];
+      let editIndex = null;
+      const addTodo = () => {
+        const inputElement = document.querySelector("input");
+        const value = inputElement.value;
+        if (!value.trim()) return;
+
+        if (editIndex !== null) {
+            todos[editIndex].title = value;
+            editIndex = null;
+        } else {
+            todos.push({title: value})
+        }
+    
+        render();
+        document.querySelector("input").value = "";
+      };
+
+      const createTodoComponents = (todo, index) => {
+        const div = document.createElement("div");
+        const h1 = document.createElement("h1");
+        const button = document.createElement("button");
+        button.innerHTML = "Delete";
+        h1.innerHTML = todo.title;
+        button.onclick = () => {
+          todos.splice(index, 1);
+          render();
+        };
+        const edit = document.createElement("button");
+        edit.innerHTML = "Edit" 
+        edit.onclick = () => {
+         document.querySelector("input").value = todo.title;
+         editIndex = index;
+        }
+        div.append(h1);
+        div.append(button);
+         div.append(edit)
+        return div;
+      };
+      const render = () => {
+        document.querySelector("#todo-list").innerHTML = "";
+        for (i = 0; i < todos.length; i++) {
+          const element = createTodoComponents(todos[i], i);
+          document.querySelector("#todo-list").appendChild(element);
+        }
+      };
+
+      console.log(todo);
+    </script>
+  </body>
+</html>
