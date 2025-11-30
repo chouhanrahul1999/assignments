@@ -11,5 +11,5 @@ const main = (fileName) => {
         console.log(total + 1)
     })
 }
-
+const fileName = "a.txt"
 main(process.argv[2])
