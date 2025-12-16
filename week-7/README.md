@@ -32,9 +32,9 @@
 ---
 
 ### POST /admin/login 
-**Description**: Authenticates an admin. It requires the admin to send username and password in the headers.  
+**Description**: Authenticates an admin. It requires the admin to send username and password in the body.  
 **Input**:  
-**Headers**: 
+**Body**: 
 ```json
 { 
   "username": "admin", 
@@ -158,9 +158,9 @@
 ---
 
 ### POST /users/login 
-**Description**: Authenticates a user. It requires the user to send username and password in the headers.  
+**Description**: Authenticates a user. It requires the user to send username and password in the body.  
 **Input**:  
-**Headers**: 
+**Body**: 
 ```json
 { 
   "username": "user", 
