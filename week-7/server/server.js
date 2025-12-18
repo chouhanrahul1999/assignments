@@ -1,66 +1,32 @@
 //  TODO: Can you create backend with standard folder structure like: week-4/hard ???
 const express = require('express');
-const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const dotenv = require("dotenv");
+const cors = require('cors');
+const adminRoutes = require('./routes/admin')
+const userRoutes = require('./routes/user')
+
 dotenv.config();
+
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
-const secret = process.env.JWT_SECRERT;  // This should be in an environment variable in a real application
-const port = process.env.PORT;
 
-// Define mongoose schemas
+const port = process.env.PORT || 3000;
+
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log('Connected to Mongodb'))
+    .catch(err => console.error('Mongodb connection error:', err));
+
+app.use('/admin', adminRoutes);
+app.use('/user', userRoutes);
 
 
-
-
-// Connect to MongoDB
-mongoose.connect('<YourMongoDbConnectionString>');
-
-
-// Admin routes
-app.post('/admin/signup', (req, res) => {
-    // logic to sign up admin
-});
-
-app.post('/admin/login', (req, res) => {
-    // logic to log in admin
-});
-
-app.post('/admin/courses', (req, res) => {
-    // logic to create a course
-});
-
-app.put('/admin/courses/:courseId', (req, res) => {
-    // logic to edit a course
-});
-
-app.get('/admin/courses', (req, res) => {
-    // logic to get all courses
-});
-
-// User routes
-app.post('/users/signup', (req, res) => {
-    // logic to sign up user
-});
-
-app.post('/users/login', (req, res) => {
-    // logic to log in user
-});
-
-app.get('/users/courses', (req, res) => {
-    // logic to list all courses
-});
-
-app.post('/users/courses/:courseId', (req, res) => {
-    // logic to purchase a course
-});
-
-app.get('/users/purchasedCourses', (req, res) => {
-    // logic to view purchased courses
-});
+app.get('/', (req, res) => {
+    res.send('Welcome to the Course Management System API');
+})
 
 app.listen(port, () => {
     console.log('Server is listening on port 3000');
