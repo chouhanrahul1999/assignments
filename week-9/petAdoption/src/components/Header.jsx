@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <div>Header</div>
+    <nav style={{ backgroundColor: "#c59771bd", padding: "16px 32px" }}>
+      <h1>{props.message}</h1>
+    </nav>
   )
 }
 

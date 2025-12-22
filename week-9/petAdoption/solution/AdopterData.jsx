@@ -35,7 +35,7 @@ class AdopterData extends Component {
                                 <td>{data.petName}</td>
                                 <td>{data.petType}</td>
                                 <td>{data.breed}</td>
-                                <td>{data.adopterName}</td>
+                                <td>{data.adoptorName}</td>
                                 <td>{data.email}</td>
                                 <td>{data.phone}</td>
                             </tr>
@@ -46,10 +46,10 @@ class AdopterData extends Component {
                     <button
                         onClick={handleGoBack}
                         style={{
-                            padding: "10px 20px", 
+                            padding: "10px 20px",
                             boxSizing: "border-box",
-                            width: "auto", 
-                            display: "inline-block" 
+                            width: "auto",
+                            display: "inline-block"
                         }}
                     >
                         Go Back
