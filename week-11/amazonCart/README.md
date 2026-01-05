@@ -44,7 +44,7 @@ Create a React application with the following features:
 - **Navbar Component**: Include a navigation bar with:
   - A logo linking to the wishlist page.
   - A cart icon linking to the `AmazonCart` component.
-  
+
 
 ### AmazonCart Component
 
@@ -83,3 +83,4 @@ Implement the following features to improve functionality and user experience:
 ![Image](https://utfs.io/f/A8JZzw0Laf9jsWDdfREK4EWrL9nSe0giovIACkYzHDFRf3aM)
 ![Image](https://utfs.io/f/A8JZzw0Laf9j3K3HCB1eHnWBajspriovNKPtZG1MXc3mw4gR)
 ![Image](https://utfs.io/f/A8JZzw0Laf9jmKHTRVDI0gw2iSFX4st1yfhb5xDU6LKrBoHP)
+

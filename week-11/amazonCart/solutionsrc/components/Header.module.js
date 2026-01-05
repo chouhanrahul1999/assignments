@@ -6,6 +6,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%'
   },
   headerContainer: {
     width: '100%',
